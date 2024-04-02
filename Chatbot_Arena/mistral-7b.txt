@@ -1,0 +1,81 @@
+Thought: Creating a knowledge graph with Neo4j syntax for the "Cause_motion" frame and its related elements, inter-element relationships, frame relations and hierarchies, metaphorical and contrastive relationships.
+
+Action:
+
+1. Create frame node for "Cause_motion" frame.
+```vbnet
+CREATE :Frame:Cause_motion {name: "Cause_motion"}
+```
+2. Create node for each frame element.
+```vbnet
+CREATE :Agent {name: "Agent"}
+CREATE :Area {name: "Area"}
+CREATE :Cause {name: "Cause"}
+CREATE :Goal {name: "Goal"}
+CREATE :Initial_state {name: "Initial_state"}
+CREATE :Path {name: "Path"}
+CREATE :Result {name: "Result"}
+CREATE :Source {name: "Source"}
+CREATE :Theme {name: "Theme"}
+CREATE :Degree {name: "Degree"}
+CREATE :Depictive {name: "Depictive"}
+CREATE :Distance {name: "Distance"}
+CREATE :Duration {name: "Duration"}
+CREATE :Explanation {name: "Explanation"}
+CREATE :Handle {name: "Handle"}
+CREATE :Instrument {name: "Instrument"}
+CREATE :Manner {name: "Manner"}
+CREATE :Means {name: "Means"}
+CREATE :Place {name: "Place"}
+CREATE :Subregion {name: "Subregion"}
+CREATE :Time {name: "Time"}
+```
+3. Link elements to frame.
+```vbnet
+MATCH (f:Frame:Cause_motion)
+CREATE :FrameElement-Frame(frame: f, element: Agent),
+      :FrameElement-Frame(frame: f, element: Area),
+      :FrameElement-Frame(frame: f, element: Cause),
+      :FrameElement-Frame(frame: f, element: Goal),
+      :FrameElement-Frame(frame: f, element: Initial_state),
+      :FrameElement-Frame(frame: f, element: Path),
+      :FrameElement-Frame(frame: f, element: Result),
+      :FrameElement-Frame(frame: f, element: Source),
+      :FrameElement-Frame(frame: f, element: Theme),
+      :FrameElement-Frame(frame: f, element: Degree),
+      :FrameElement-Frame(frame: f, element: Depictive),
+      :FrameElement-Frame(frame: f, element: Distance),
+      :FrameElement-Frame(frame: f, element: Duration),
+      :FrameElement-Frame(frame: f, element: Explanation),
+      :FrameElement-Frame(frame: f, element: Handle),
+      :FrameElement-Frame(frame: f, element: Instrument),
+      :FrameElement-Frame(frame: f, element: Manner),
+      :FrameElement-Frame(frame: f, element: Means),
+      :FrameElement-Frame(frame: f, element: Place),
+      :FrameElement-Frame(frame: f, element: Subregion),
+      :FrameElement-Frame(frame: f, element: Time)
+```
+4. Inter-element relationships.
+```vbnet
+CREATE :Agent-Cause {type: "causes"}, :Cause-Theme {type: "causes_motion"},
+      :Goal-Result {type: "is"}, :Source-Path {type: "along"},
+      :Path-Goal {type: "ends_at"}, :Initial_state-Result {type: "is_preceded_by"},
+      :Goal-Frame:Cause_motion {type: "belongs_to"}, :Agent-Frame:Cause_motion {type: "performs"}
+```
+5. Frame relations and hierarchies.
+```vbnet
+MATCH (f:Frame:Cause_motion)
+CREATE :Cause_motion-Transitive_action {type: "is_a", frame: f},
+      :Cause_motion-Cause_fluidic_motion {type: "is_a"},
+      :Cause_motion-Passing {type: "is_a"},
+      :Cause_motion-Shoot_projectiles {type: "is_a"}
+```
+6. Metaphorical and contrastive relationships.
+```vbnet
+MATCH (f:Frame:Ccause\_motion), :Frame:Cause\_fluidic\_motion, :Frame:Metaphor, :Frame:Contrast
+CREATE :Cause\_motion-Metaphor {type: "is_a_metaphor_for", frame: f, metaphor: :Frame:Metaphor {name: "Causation as Change of State"}}
+CREATE :Cause\_motion-Contrast {type: "contrasts_with", frame: f, contrast: :Frame:Removing {name: "Causation as Removal"}}
+```
+In this example, we have created nodes for each frame element, linked them to the frame, and established relationships between them. We have also created nodes for various frame relations, hierarchies, metaphors, and contrasts.
+
+

@@ -1,0 +1,93 @@
+Sure, here are some examples of graph queries to build the relationships in a knowledge graph with Neo4j syntax:
+
+### Frame and Element Node
+
+Thought: Cause_motion
+
+Action:
+
+CREATE (f:Frame {name: 'Cause_motion'})
+CREATE (e:Element {name: 'Agent', frame: f, semantic_type: 'Sentient'})
+CREATE (e:Element {name: 'Theme', frame: f, semantic_type: 'Physical_object'})
+CREATE (e:Element {name: 'Goal', frame: f, semantic_type: 'Goal'})
+CREATE (e:Element {name: 'Source', frame: f, semantic_type: 'Source'})
+CREATE (e:Element {name: 'Path', frame: f, semantic_type: 'Path'})
+
+### Link Element to Frame
+
+Thought: Cause_motion
+
+Action:
+
+CREATE (e:Element {name: 'Agent', frame: f, semantic_type: 'Sentient'})
+CREATE (e:Element {name: 'Theme', frame: f, semantic_type: 'Physical_object'})
+CREATE (e:Element {name: 'Goal', frame: f, semantic_type: 'Goal'})
+CREATE (e:Element {name: 'Source', frame: f, semantic_type: 'Source'})
+CREATE (e:Element {name: 'Path', frame: f, semantic_type: 'Path'})
+
+### Inter-element Relationship
+
+Thought: Cause_motion
+
+Action:
+
+CREATE (e:Element {name: 'Agent', frame: f, semantic_type: 'Sentient'})
+CREATE (e:Element {name: 'Theme', frame: f, semantic_type: 'Physical_object'})
+CREATE (e:Element {name: 'Goal', frame: f, semantic_type: 'Goal'})
+CREATE (e:Element {name: 'Source', frame: f, semantic_type: 'Source'})
+CREATE (e:Element {name: 'Path', frame: f, semantic_type: 'Path'})
+
+CREATE (f:Frame {name: 'Cause_motion'})
+CREATE (e:Element {name: 'Agent', frame: f, semantic_type: 'Sentient'})
+CREATE (e:Element {name: 'Theme', frame: f, semantic_type: 'Physical_object'})
+CREATE (e:Element {name: 'Goal', frame: f, semantic_type: 'Goal'})
+CREATE (e:Element {name: 'Source', frame: f, semantic_type: 'Source'})
+CREATE (e:Element {name: 'Path', frame: f, semantic_type: 'Path'})
+
+CREATE (e:Element {name: 'Agent', frame: f, semantic_type: 'Sentient'})-[:CAUSES {degree: 100}]->(e:Element {name: 'Theme', frame: f, semantic_type: 'Physical_object'})
+CREATE (e:Element {name: 'Theme', frame: f, semantic_type: 'Physical_object'})-[:MOVES {degree: 100}]->(e:Element {name: 'Goal', frame: f, semantic_type: 'Goal'})
+CREATE (e:Element {name: 'Source', frame: f, semantic_type: 'Source'})-[:IS_SOURCE_OF {degree: 100}]->(e:Element {name: 'Theme', frame: f, semantic_type: 'Physical_object'})
+CREATE (e:Element {name: 'Path', frame: f, semantic_type: 'Path'})-[:IS_PATH_OF {degree: 100}]->(e:Element {name: 'Theme', frame: f, semantic_type: 'Physical_object'})
+
+### Frame Relations and Hierarchies
+
+Thought: Cause_motion
+
+Action:
+
+CREATE (f:Frame {name: 'Cause_motion'})
+CREATE (f:Frame {name: 'Placing'})
+CREATE (f:Frame {name: 'Removing'})
+CREATE (f:Frame {name: 'Filling'})
+CREATE (f:Frame {name: 'Emptying'})
+
+CREATE (f:Frame {name: 'Cause_motion'})-
+
+Sure! Here's the continuation of the previous response:
+
+CREATE (f:Frame {name: 'Cause_motion'})-[:IS_A {degree: 100}]->(f:Frame {name: 'Transitive_action'})
+CREATE (f:Frame {name: 'Placing'})-[:IS_A {degree: 100}]->(f:Frame {name: 'Cause_motion'})
+CREATE (f:Frame {name: 'Removing'})-[:IS_A {degree: 100}]->(f:Frame {name: 'Cause_motion'})
+CREATE (f:Frame {name: 'Filling'})-[:IS_A {degree: 100}]->(f:Frame {name: 'Cause_motion'})
+CREATE (f:Frame {name: 'Emptying'})-[:IS_A {degree: 100}]->(f:Frame {name: 'Cause_motion'})
+
+### Metaphorical and Contrastive Relationships
+
+Thought: Cause_motion
+
+Action:
+
+CREATE (f:Frame {name: 'Cause_motion'})
+CREATE (f:Frame {name: 'Bringing'})
+CREATE (f:Frame {name: 'Excreting'})
+CREATE (f:Frame {name: 'Gathering_up'})
+CREATE (f:Frame {name: 'Ingestion'})
+
+CREATE (f:Frame {name: 'Cause_motion'})-[:METAPHORICAL_RELATIONSHIP {degree: 100}]->(f:Frame {name: 'Bringing'})
+CREATE (f:Frame {name: 'Cause_motion'})-[:METAPHORICAL_RELATIONSHIP {degree: 100}]->(f:Frame {name: 'Excreting'})
+CREATE (f:Frame {name: 'Cause_motion'})-[:METAPHORICAL_RELATIONSHIP {degree: 100}]->(f:Frame {name: 'Gathering_up'})
+CREATE (f:Frame {name: 'Cause_motion'})-[:METAPHORICAL_RELATIONSHIP {degree: 100}]->(f:Frame {name: 'Ingestion'})
+
+CREATE (f:Frame {name: 'Cause_motion'})-[:CONTRSTIVE_RELATIONSHIP {degree: 100}]->(f:Frame {name: 'Bringing'})
+CREATE (f:Frame {name: 'Cause_motion'})-[:CONTRSTIVE_RELATIONSHIP {degree: 100}]->(f:Frame {name: 'Excreting'})
+CREATE (f:Frame {name: 'Cause_motion'})-[:CONTRSTIVE_RELATIONSHIP {degree: 100}]->(f:Frame {name

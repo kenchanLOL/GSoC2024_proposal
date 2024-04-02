@@ -1,0 +1,178 @@
+Cause_motion
+Definition:
+An Agent causes a Theme to move from a Source, along a Path, to a Goal. Different members of the frame emphasize the trajectory to different degrees, and a given instance of the frame will usually leave some of the Source, Path and/or Goal implicit. The completion of motion is not required (unlike the Placing frame, see below), although individual sentences annotated with this frame may emphasize the Goal.
+
+This frame is very broad and contains several different kinds of words that refer to causing motion. Some words in this frame do not emphasize the Manner/Means of causing the motion (transfer.v, move.v). For many of the others (cast.v, throw.v, chuck.v, etc.), the Agent has control of the Theme only at the Source of motion, and does not experience overall motion. For others (e.g. drag.v, push.v, shove.v, etc.) the Agent has control of the Theme throughout the motion; for these words, the Theme is resistant to motion due to some friction with the surface along which they move.
+She THREW her shoes into the dryer .
+
+The mechanic DRAGGED the jack out from under the car .
+
+We will MOVE the sofa out of the room through the french doors, down the stairs, and onto the sidewalk .
+
+
+
+
+This frame is used in a very large number of productive metaphors, not all of which can be outlined here. The most salient types include causing an entity, construed as a Theme, to change state from an initial state (Source) via an intermediate state (Path) to a final state (Goal):
+Hillary was CATAPULTED to stardom and his life has never been the same since . CNI
+
+She felt as though FLUNG from health to illness and back by the day , by the hour .
+
+Once our parents are dead , we are CATAPULTED into becoming the older generation ourselves . CNI
+
+Croquet was PUSHED out by tennis .
+
+
+A particularly divergent subtype casts changing someone's intentions as changing their location:
+DemocratsFORCED the Senate into a rare closed door session .
+
+He NUDGED Mrs Thatcher towards acceptance of a unified Germany .
+
+
+Another subtype is specifically about causing a change in quantity (the Theme) through some sequence of values (Source, Path, and Goal):
+Bonus payments would be handed out for PUSHING up voting levels CNI .
+
+
+Another type, with many subtypes, involves causing an action or state (construed as a Theme) to have an effect on another person or location or conceptual domain. In such cases, theGoal is used for the final affected domain, and Source for initial affected domain, Path for an intermediate affected domain, and Distance for degree of difference between original application of the action and final:
+Jake had been HURLING these same insults at her now for years
+
+One can not PRESS this argument too far .
+
+She SHOVED the thought to the very back of her mind .
+
+She FLUNG him a savage little smile .
+All of the foregoing metaphorical uses are annotated in this frame and marked "Metaphor", since they seem to be semantically motivated and not lexically idiosyncratic.
+
+
+
+This frame contrasts with the following frames which talk about an Agent changing a Theme's position with respect to a landmark (either Source or Goal):
+
+In Placing, the figure (Theme) is profiled as the object, and ends up on the ground (Goal). The focus is on the final stage of motion, in which the Theme ends up at the Goal, and usually stably remains there.
+Joyce PLACED the flowers onto the bed.
+
+
+In Filling, the ground (Goal) is profiled as the object, and the figure (Theme) ends up on the ground (Goal).
+John FILLED the box with old toys.
+
+
+In Removing, the figure (Theme) is profiled, and is removed from the ground (Source).
+Jennifer REMOVED the flowers from the bed.
+
+
+In Emptying, the ground (Source) is profiled and the figure (Theme) is removed from it.
+Jason EMPTIED the box of the old toys .
+
+
+Words of this frame also differ from the words of the Bringing frame in that they are more general: either the Agent has a momentary interaction with the Theme that causes its motion, unlike the continuous causation of Bringing, or the Agent continuously acts on the Theme, but there is no supporting object that helps with the motion like the Carrier of the Bringing frame.
+
+FEs:
+Core:
+Agent [Agt]
+Semantic Type: Sentient The Agent is the one whose action causes the motion of a Theme. The Agent is generally realized as the External Argument.
+Pat THREW the china at the wall.
+
+
+Area [Area]     The FE Area is used for expressions which describe a general area in which motion takes place when the motion is understood to be irregular or not to consist of a single, linear path. Locative setting adjuncts may also be assigned this frame element.
+Kim PUSHED the lawnmower around the garden.
+
+
+Cause [Cse]
+Excludes: Agent Cause marks expressions that indicate some non-intentional, typically non-human, force that causes the Theme to be set in motion.
+The storm TOSSED the sailor from the boat
+
+
+Goal [Goal]
+Semantic Type: Goal
+Excludes: Area  The FE Goal is the point at which the Theme ends up as a result of the motion.
+Kim THREW the cat into the garden.
+
+
+Initial_state [Initial_State]
+Excludes: Area  A previous state that the Theme was in before the beginning of its motion.
+Paul PULLED Fran upright from her sitting position.
+
+
+Path [Path]
+Excludes: Area  The FE Path is any description of a trajectory of motion which is neither a Source nor Goal.
+I PUSHED the trolley along the street.
+
+
+Result []
+Excludes: Area  A resultant state that the Theme is in at the end of its motion.
+The fireman DRAGGED the injured driver clear
+
+
+Source [Src]
+Semantic Type: Source
+Excludes: Area  The FE Source is the starting point of motion.
+Pat dragged the box out of the cupboard.
+
+
+Theme [Thm]
+Semantic Type: Physical_object  The FE Theme is generally an NP Object.
+Pat THREW the china at the wall.
+
+
+Non-Core:
+Degree [Degr]
+Semantic Type: Degree   Degree to which event occurs
+
+Depictive [Dep] The state of a participant during the action
+We PUSHED the cart around, gleeful.
+
+
+Distance [Dist] The FE Distance is any expression characterizing the extent of motion of the Theme.
+Pat THREW the Javelin 50 meters.
+
+
+Duration []     The amount of time that the action requires.
+
+Explanation []  This FE denotes a proposition from which the main clause logically follows.
+
+Handle []       The Agent's manipulation of the Theme may be further specified as being localized to some part of the Theme, a Handle. The Handle is usually expressed as a PP
+
+Instrument [Ins]
+Semantic Type: Physical_entity  An entity saliently involved in the transmission of force from an Agent to a Theme. It may be the Agent's bodypart, or some kind of device.
+When passing a basketball, you should THROW with bath hands.
+
+
+Manner [Manr]
+Semantic Type: Manner   The FE Manner is any expression which describes a property of the motion of the Theme which is not directly related to the trajectory of motion. Descriptions of steadiness, grace, and other things count as Manner expressions.
+
+Means [Mns]
+Semantic Type: State_of_affairs The FE Means indicates the action that is taken that results in the motion of the Theme
+
+Place [Place]
+Semantic Type: Locative_relation        The Place is the general area that provides a setting for a specific motion (with Source, Path, or Goal).
+
+Subregion []
+Semantic Type: Locative_relation        Subregion identifies the part of the Theme that makes contact with the resulting location. When Subregion is expressed, there usually is no Goal expressed.
+The horse PITCHED the rider on his head
+
+
+Time [Time]
+Semantic Type: Time     The time at which the motion of the Theme occurs.
+We SHOVED half of the cargo overboard on the 29th.
+
+
+FE Core set(s):
+{Goal, Initial_state, Path, Result, Source}
+Frame-frame Relations:
+Inherits from: Transitive_action
+Is Inherited by: Cause_fluidic_motion, Passing, Shoot_projectiles
+Perspective on:
+Is Perspectivized in:
+Uses:
+Is Used by: Bringing, Excreting, Gathering_up, Ingestion
+Subframe of:
+Has Subframe(s): Placing, Removing
+Precedes:
+Is Preceded by:
+Is Inchoative of:
+Is Causative of: Motion
+
+ ### Instrustion
+Given the above information, generate examples of graph queries to build the following relationships in knowledge graph with Neo4j syntax :frame and element node, Link element to frame, Inter-element Relationship, Frame Relations and Hierarchies, Metaphorical and Contrastive Relationships
+### Output Format
+Relationship : <relationship>
+Thought : <thought>
+Action : <queries example>

@@ -1,0 +1,42 @@
+
+**Thought:**
+
+The Cause_motion frame is a broad frame that encompasses a wide range of verbs that describe causing motion. It contrasts with other frames such as Placing, Filling, Removing, and Emptying, which focus on specific types of motion with respect to landmarks.
+
+**Action:**
+
+**1. Link element to frame:**
+
+```neo4j
+MATCH (e)<-[:USES]-(f) WHERE f IS (Cause_motion) RETURN e
+```
+
+**2. Inter-element Relationship:**
+
+```neo4j
+MATCH (a)<-[:HAS_SUBFRAME]-(f) WHERE f IS (Cause_motion) RETURN a
+```
+
+**3. Frame Relations and Hierarchies:**
+
+```neo4j
+MATCH (f)<-[:INHERITS_FROM]-(g) WHERE f IS (Cause_motion) RETURN g
+```
+
+**4. Metaphorical and Contrastive Relationships:**
+
+```neo4j
+MATCH (f)<-[:IS_USED_BY]-(m) WHERE f IS (Cause_motion) AND m IS (Metaphor) RETURN m
+```
+
+**5. Precedes and Is Causative of Relationships:**
+
+```neo4j
+MATCH (a)<-[:PRECEDES]-(b) WHERE a IS (Cause_motion) RETURN b
+```
+
+**6. Frame Subframe Relationships:**
+
+```neo4j
+MATCH (f)<-[:HAS_SUBFRAME]-(g) WHERE f IS (Cause_motion) AND g IS (Placing) RETURN g
+```

@@ -1,0 +1,102 @@
+Thought: To build the relationships described in the information provided, we can use the following graph queries:
+
+Action:
+
+1. Create frame and element nodes:
+```
+CREATE (f:Frame {name: "Cause_motion"})
+CREATE (e1:Element {name: "Agent", type: "Semantic"}),
+       (e2:Element {name: "Area", type: "Semantic"}),
+       (e3:Element {name: "Cause", type: "Semantic"}),
+       (e4:Element {name: "Goal", type: "Semantic"}),
+       (e5:Element {name: "Initial_state", type: "Semantic"}),
+       (e6:Element {name: "Path", type: "Semantic"}),
+       (e7:Element {name: "Result", type: "Semantic"}),
+       (e8:Element {name: "Source", type: "Semantic"}),
+       (e9:Element {name: "Theme", type: "Semantic"}),
+       (e10:Element {name: "Degree", type: "Semantic"}),
+       (e11:Element {name: "Depictive", type: "Semantic"}),
+       (e12:Element {name: "Distance", type: "Semantic"}),
+       (e13:Element {name: "Duration", type: "Semantic"}),
+       (e14:Element {name: "Explanation", type: "Semantic"}),
+       (e15:Element {name: "Handle", type: "Semantic"}),
+       (e16:Element {name: "Instrument", type: "Semantic"}),
+       (e17:Element {name: "Manner", type: "Semantic"}),
+       (e18:Element {name: "Means", type: "Semantic"}),
+       (e19:Element {name: "Place", type: "Semantic"}),
+       (e20:Element {name: "Subregion", type: "Semantic"}),
+       (e21:Element {name: "Time", type: "Semantic"})
+```
+
+2. Link elements to the frame:
+```
+CREATE (f)-[:HAS_ELEMENT]->(e1),
+       (f)-[:HAS_ELEMENT]->(e2),
+       (f)-[:HAS_ELEMENT]->(e3),
+       (f)-[:HAS_ELEMENT]->(e4),
+       (f)-[:HAS_ELEMENT]->(e5),
+       (f)-[:HAS_ELEMENT]->(e6),
+       (f)-[:HAS_ELEMENT]->(e7),
+       (f)-[:HAS_ELEMENT]->(e8),
+       (f)-[:HAS_ELEMENT]->(e9),
+       (f)-[:HAS_ELEMENT]->(e10),
+       (f)-[:HAS_ELEMENT]->(e11),
+       (f)-[:HAS_ELEMENT]->(e12),
+       (f)-[:HAS_ELEMENT]->(e13),
+       (f)-[:HAS_ELEMENT]->(e14),
+       (f)-[:HAS_ELEMENT]->(e15),
+       (f)-[:HAS_ELEMENT]->(e16),
+       (f)-[:HAS_ELEMENT]->(e17),
+       (f)-[:HAS_ELEMENT]->(e18),
+       (f)-[:HAS_ELEMENT]->(e19),
+       (f)-[:HAS_ELEMENT]->(e20),
+       (f)-[:HAS_ELEMENT]->(e21)
+```
+
+3. Create inter-element relationships:
+```
+CREATE (e1)-[:EXCLUDES]->(e3)
+CREATE (e4)-[:EXCLUDES]->(e2)
+CREATE (e5)-[:EXCLUDES]->(e2)
+CREATE (e6)-[:EXCLUDES]->(e2)
+CREATE (e8)-[:SEMANTIC_TYPE]->(e19)
+CREATE (e9)-[:SEMANTIC_TYPE]->(e16)
+```
+
+4. Create frame relations and hierarchies:
+```
+CREATE (f)-[:INHERITS_FROM]->(f1:Frame {name: "Transitive_action"})
+CREATE (f)-[:IS_INHERITED_BY]->(f2:Frame {name: "Cause_fluidic_motion"}),
+```
+
+5. Create metaphorical and contrastive relationships:
+```
+CREATE (f)-[:PERSPECTIVE_ON]->(f3:Frame {name: "Placing"}),
+       (f)-[:PERSPECTIVE_ON]->(f4:Frame {name: "Removing"}),
+       (f)-[:PERSPECTIVE_ON]->(f5:Frame {name: "Filling"}),
+       (f)-[:PERSPECTIVE_ON]->(f6:Frame {name: "Emptying"})
+
+CREATE (f)-[:CONTRASTS_WITH]->(f3),
+       (f)-[:CONTRASTS_WITH]->(f4),
+       (f)-[:CONTRASTS_WITH]->(f5),
+       (f)-[:CONTRASTS_WITH]->(f6)
+
+CREATE (f)-[:METAPHORICAL_USE]->(e4),
+       (f)-[:METAPHORICAL_USE]->(e6),
+       (f)-[:METAPHORICAL_USE]->(e8)
+```
+
+6. Create additional frame relations:
+```
+CREATE (f)-[:USES]->(f7:Frame {name: "Bringing"}),
+       (f)-[:USED_BY]->(f8:Frame {name: "Excreting"}),
+       (f)-[:USED_BY]->(f9:Frame {name: "Gathering_up"}),
+       (f)-[:USED_BY]->(f10:Frame {name: "Ingestion"})
+
+CREATE (f)-[:HAS_SUBFRAME]->(f3),
+       (f)-[:HAS_SUBFRAME]->(f4)
+
+CREATE (f)-[:IS_CAUSATIVE_OF]->(f11:Frame {name: "Motion"})
+```
+
+This set of graph queries should create the necessary relationships described in the information provided, including frame and element nodes, inter-element relationships, frame relations and hierarchies, and metaphorical and contrastive relationships.

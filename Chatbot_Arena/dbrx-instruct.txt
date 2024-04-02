@@ -1,0 +1,123 @@
+Relationship : Frame and Element Node
+Thought : Create a node for the frame "Cause_motion" and its FE nodes "Agent", "Goal", "Path", "Source", "Theme", "Initial_state", "Result", "Area", "Cause", "Degree", "Distance", "Duration", "Explanation", "Handle", "Instrument", "Manner", "Means", "Place", "Subregion", "Time".
+Action :
+```
+CREATE (f:Frame {name: 'Cause_motion'})
+CREATE (fe1:FE {name: 'Agent'})
+CREATE (fe2:FE {name: 'Goal'})
+CREATE (fe3:FE {name: 'Path'})
+CREATE (fe4:FE {name: 'Source'})
+CREATE (fe5:FE {name: 'Theme'})
+CREATE (fe6:FE {name: 'Initial_state'})
+CREATE (fe7:FE {name: 'Result'})
+CREATE (fe8:FE {name: 'Area'})
+CREATE (fe9:FE {name: 'Cause'})
+CREATE (fe10:FE {name: 'Degree'})
+CREATE (fe11:FE {name: 'Distance'})
+CREATE (fe12:FE {name: 'Duration'})
+CREATE (fe13:FE {name: 'Explanation'})
+CREATE (fe14:FE {name: 'Handle'})
+CREATE (fe15:FE {name: 'Instrument'})
+CREATE (fe16:FE {name: 'Manner'})
+CREATE (fe17:FE {name: 'Means'})
+CREATE (fe18:FE {name: 'Place'})
+CREATE (fe19:FE {name: 'Subregion'})
+CREATE (fe20:FE {name: 'Time'})
+
+CREATE (f)-[:HAS_FE]->(fe1)
+CREATE (f)-[:HAS_FE]->(fe2)
+CREATE (f)-[:HAS_FE]->(fe3)
+CREATE (f)-[:HAS_FE]->(fe4)
+CREATE (f)-[:HAS_FE]->(fe5)
+CREATE (f)-[:HAS_FE]->(fe6)
+CREATE (f)-[:HAS_FE]->(fe7)
+CREATE (f)-[:HAS_FE]->(fe8)
+CREATE (f)-[:HAS_FE]->(fe9)
+CREATE (f)-[:HAS_FE]->(fe10)
+CREATE (f)-[:HAS_FE]->(fe11)
+CREATE (f)-[:HAS_FE]->(fe12)
+CREATE (f)-[:HAS_FE]->(fe13)
+CREATE (f)-[:HAS_FE]->(fe14)
+CREATE (f)-[:HAS_FE]->(fe15)
+CREATE (f)-[:HAS_FE]->(fe16)
+CREATE (f)-[:HAS_FE]->(fe17)
+CREATE (f)-[:HAS_FE]->(fe18)
+CREATE (f)-[:HAS_FE]->(fe19)
+CREATE (f)-[:HAS_FE]->(fe20)
+```
+
+Relationship : Link element to frame
+Thought : Create a relationship between the frame "Cause_motion" and its FE nodes "Agent", "Goal", "Path", "Source", "Theme", "Initial_state", "Result", "Area", "Cause", "Degree", "Distance", "Duration", "Explanation", "Handle", "Instrument", "Manner", "Means", "Place", "Subregion", "Time".
+Action :
+```
+MATCH (f:Frame {name: 'Cause_motion'}), (fe1:FE {name: 'Agent'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe2:FE {name: 'Goal'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe3:FE {name: 'Path'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe4:FE {name: 'Source'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe5:FE {name: 'Theme'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe6:FE {name: 'Initial_state'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe7:FE {name: 'Result'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe8:FE {name: 'Area'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe9:FE {name: 'Cause'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe10:FE {name: 'Degree'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe11:FE {name: 'Distance'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe12:FE {name: 'Duration'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe13:FE {name: 'Explanation'})
+MATCH (f:Frame {name: 'Cause_motion'}), (fe14:FE {name: 'Handle'})
+```
+Action :
+```
+CREATE (fe15:FE {name: 'Instrument'})
+CREATE (fe16:FE {name: 'Manner'})
+CREATE (fe17:FE {name: 'Means'})
+CREATE (fe18:FE {name: 'Place'})
+CREATE (fe19:FE {name: 'Subregion'})
+CREATE (fe20:FE {name: 'Time'})
+
+CREATE (f)-[:HAS_FE]->(fe15)
+CREATE (f)-[:HAS_FE]->(fe16)
+CREATE (f)-[:HAS_FE]->(fe17)
+CREATE (f)-[:HAS_FE]->(fe18)
+CREATE (f)-[:HAS_FE]->(fe19)
+CREATE (f)-[:HAS_FE]->(fe20)
+```
+
+Relationship : Inter-element Relationship
+Thought : Create relationships between the elements of the frame "Cause_motion" such as "Agent causes Theme to move from Source, along Path, to Goal".
+Action :
+```
+MATCH (f:Frame {name: 'Cause_motion'}), (fe1:FE {name: 'Agent'}), (fe2:FE {name: 'Theme'}), (fe4:FE {name: 'Source'}), (fe3:FE {name: 'Path'}), (fe5:FE {name: 'Goal'})
+CREATE (fe1)-[:CAUSES]->(fe2)
+CREATE (fe2)-[:MOVES_FROM]->(fe4)
+CREATE (fe2)-[:MOVES_ALONG]->(fe3)
+CREATE (fe2)-[:MOVES_TO]->(fe5)
+```
+
+Frame Relations and Hierarchies
+Thought : Create relationships between frames to indicate inheritance, precedes, is preceded by, is inchoative of, is causative of, and other relationships.
+Action :
+```
+MATCH (f1:Frame {name: 'Cause_motion'}), (f2:Frame {name: 'Transitive_action'})
+CREATE (f1)-[:INHERITS_FROM]->(f2)
+
+MATCH (f1:Frame {name: 'Cause_motion'}), (f2:Frame {name: 'Placing'}), (f3:Frame {name: 'Removing'})
+CREATE (f1)-[:HAS_SUBFRAME]->(f2)
+CREATE (f1)-[:HAS_SUBFRAME]->(f3)
+
+MATCH (f1:Frame {name: 'Cause_motion'}), (f2:Frame {name: 'Bringing'})
+CREATE (f1)-[:IS_CAUSATIVE_OF]->(f2)
+
+MATCH (f1:Frame {name: 'Cause_motion'}), (f2:Frame {name: 'Motion'})
+CREATE (f1)-[:IS_INCHOATIVE_OF]->(f2)
+```
+
+Metaphorical and Contrastive Relationships
+Thought : Create relationships between frames to indicate metaphorical and contrastive relationships.
+Action :
+```
+MATCH (f1:Frame {name: 'Cause_motion'}), (f2:Frame {name: 'Placing'})
+CREATE (f1)-[:IS_CONTRASTIVE_WITH]->(f2)
+
+MATCH (f1:Frame {name: 'Cause_motion'}), (f2:Frame {name: 'Bringing'})
+CREATE (f1)-[:IS_METAPHOR_OF]->(f2)
+```

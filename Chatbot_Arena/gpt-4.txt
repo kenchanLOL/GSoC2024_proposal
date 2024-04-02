@@ -1,0 +1,72 @@
+### Frame and Element Node Creation
+Thought: To build the knowledge graph, we need to create nodes for the frame "Cause_Motion" and each of its elements (FEs). These nodes will serve as the basic units in the graph that can be interconnected through various relationships.
+
+Action:
+```cypher
+CREATE (:Frame {name: "Cause_Motion"})
+CREATE (:Element {name: "Agent", type: "Core"})
+CREATE (:Element {name: "Theme", type: "Core"})
+CREATE (:Element {name: "Source", type: "Core"})
+CREATE (:Element {name: "Path", type: "Core"})
+CREATE (:Element {name: "Goal", type: "Core"})
+CREATE (:Element {name: "Result", type: "Core"})
+// ... Create other elements similarly
+```
+
+### Link Element to Frame
+Thought: Each element should be linked to the "Cause_Motion" frame to show that it is a part of this frame. This can be achieved using relationships in the graph.
+
+Action:
+```cypher
+MATCH (f:Frame {name: "Cause_Motion"}), (e:Element {name: "Agent"})
+CREATE (e)-[:BELONGS_TO]->(f)
+
+MATCH (f:Frame {name: "Cause_Motion"}), (e:Element {name: "Theme"})
+CREATE (e)-[:BELONGS_TO]->(f)
+
+// ... Repeat for other elements
+```
+
+### Inter-element Relationship
+Thought: Some elements have exclusive or related roles within the frame, indicating a more complex internal structure that can be represented through relationships.
+
+Action:
+```cypher
+MATCH (e1:Element {name: "Source"}), (e2:Element {name: "Path"})
+CREATE (e1)-[:LEADS_TO]->(e2)
+
+MATCH (e1:Element {name: "Path"}), (e2:Element {name: "Goal"})
+CREATE (e1)-[:ENDS_IN]->(e2)
+
+// ... Define other relevant inter-element relationships
+```
+
+### Frame Relations and Hierarchies
+Thought: Frames can have hierarchical and relational links, such as inheritance or usage relationships. These should be represented to understand the frame structure and its connections to other frames.
+
+Action:
+```cypher
+CREATE (:Frame {name: "Transitive_action"})
+MATCH (f1:Frame {name: "Transitive_action"}), (f2:Frame {name: "Cause_Motion"})
+CREATE (f2)-[:INHERITS_FROM]->(f1)
+
+// ... Define other frame relations similarly
+```
+
+### Metaphorical and Contrastive Relationships
+Thought: Metaphorical uses of the frame and its contrastive relationships with other frames provide deeper semantic insights, which should be represented in the graph.
+
+Action:
+```cypher
+MATCH (f1:Frame {name: "Cause_Motion"}), (f2:Frame {name: "Placing"})
+CREATE (f1)-[:CONTRASTS_WITH]->(f2)
+
+// Assuming metaphorical relationships are defined as nodes
+CREATE (:Metaphor {name: "Catapulted to stardom"})
+MATCH (f:Frame {name: "Cause_Motion"}), (m:Metaphor {name: "Catapulted to stardom"})
+CREATE (f)-[:USED_IN_METAPHOR]->(m)
+
+// ... Repeat for other metaphorical and contrastive relationships
+```
+
+This set of graph queries establishes the nodes and relationships necessary to build a detailed knowledge graph representing the "Cause_Motion" frame, its elements, and its various relationships and hierarchies.
